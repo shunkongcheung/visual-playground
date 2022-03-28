@@ -1,4 +1,4 @@
-const webpackCommon = require('./webpack.common');
+const webpackCommon = require("./webpack.common");
 
 module.exports = {
   ...webpackCommon,
