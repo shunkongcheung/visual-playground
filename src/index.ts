@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { Line, RotateCube } from "./components";
+import { Heart, Line, RotateCube } from "./components";
 
 const getSetup = () => {
   const scene = new THREE.Scene();
@@ -9,7 +9,7 @@ const getSetup = () => {
     0.1,
     1000
   );
-  camera.position.set(0, 0, 10);
+  camera.position.set(0, 0, 100);
   camera.lookAt(0, 0, 0);
 
   const renderer = new THREE.WebGLRenderer();
@@ -23,7 +23,7 @@ const getSetup = () => {
 window.addEventListener("load", () => {
   const { camera, renderer, scene } = getSetup();
 
-  const components = [new Line(), new RotateCube()];
+  const components = [new Heart(), new Line(), new RotateCube()];
 
   components.map((component) => scene.add(component.render()));
 
