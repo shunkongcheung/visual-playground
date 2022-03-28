@@ -2,7 +2,10 @@ import * as THREE from "three";
 import { BaseComponent } from "./BaseComponent";
 
 export class Heart implements BaseComponent<THREE.Mesh> {
-  private mesh: THREE.Mesh;
+  private _object: THREE.Mesh;
+  get object() {
+    return this._object;
+  }
 
   constructor() {
     const heartShape = new THREE.Shape();
@@ -68,17 +71,13 @@ export class Heart implements BaseComponent<THREE.Mesh> {
 
     const geometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
 
-    this.mesh = new THREE.Mesh(
+    this._object = new THREE.Mesh(
       geometry,
       new THREE.MeshBasicMaterial({ color: 0xff0000 })
     );
   }
 
   animate() {
-    this.mesh.rotation.y += 0.01;
-  }
-
-  render() {
-    return this.mesh;
+    this._object.rotation.y += 0.01;
   }
 }

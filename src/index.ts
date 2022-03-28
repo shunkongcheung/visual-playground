@@ -25,7 +25,7 @@ window.addEventListener("load", () => {
 
   const components = [new Heart(), new Line(), new RotateCube()];
 
-  components.map((component) => scene.add(component.render()));
+  components.map((component) => scene.add(component.object));
 
   function animate() {
     requestAnimationFrame(animate);

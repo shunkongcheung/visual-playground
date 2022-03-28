@@ -2,7 +2,10 @@ import * as THREE from "three";
 import { BaseComponent } from "./BaseComponent";
 
 export class Line implements BaseComponent<THREE.Line> {
-  private line: THREE.Line;
+  private _object: THREE.Line;
+  get object() {
+    return this._object;
+  }
 
   constructor() {
     const material = new THREE.LineBasicMaterial({ color: 0x0000ff });
@@ -13,7 +16,7 @@ export class Line implements BaseComponent<THREE.Line> {
     points.push(new THREE.Vector3(10, 0, 0));
     const geometry = new THREE.BufferGeometry().setFromPoints(points);
 
-    this.line = new THREE.Line(geometry, material);
+    this._object = new THREE.Line(geometry, material);
   }
 
   animate() {
@@ -21,6 +24,6 @@ export class Line implements BaseComponent<THREE.Line> {
   }
 
   render() {
-    return this.line;
+    return this._object;
   }
 }
