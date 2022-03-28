@@ -1,3 +1,4 @@
+import { Line } from "./Line";
 import { RotateCube } from "./RotateCube";
 
-export { RotateCube };
+export { Line, RotateCube };
