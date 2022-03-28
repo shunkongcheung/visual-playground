@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { RotateCube } from "./components";
 
 const getSetup = () => {
   const scene = new THREE.Scene();
@@ -20,19 +21,15 @@ const getSetup = () => {
 window.addEventListener("load", () => {
   const { camera, renderer, scene } = getSetup();
 
-  const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
+  const components = [new RotateCube()];
+
+  components.map((component) => scene.add(component.render()));
 
   camera.position.z = 5;
 
   function animate() {
     requestAnimationFrame(animate);
-
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-
+    components.map((component) => component.animate());
     renderer.render(scene, camera);
   }
   animate();
