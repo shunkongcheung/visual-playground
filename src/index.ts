@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import * as Components from "./components";
+import { getComponent, Line, RotateCube } from "./components";
 import { getControl, FirstPersonControl } from "./controls";
 
 const getCamera = () => {
@@ -73,20 +73,22 @@ const insertLighting = (scene: THREE.Scene) => {
     renderer.domElement
   );
 
-  window.addEventListener("load", () => {
+  window.addEventListener("load", async () => {
     insertBackground(scene);
     insertLighting(scene);
+    control.handleResize();
 
-    const components = Object.values(Components).map(
-      (Component) => new Component()
+    const components = [Line, RotateCube].map((Component) =>
+      getComponent(new Component(), scene)
     );
-
-    components.map((component) => scene.add(component.object));
 
     function animate() {
       requestAnimationFrame(animate);
-      // components.map((component) => component.animate());
-      control.update(clock.getDelta());
+
+      const delta = clock.getDelta();
+      components.map((component) => component.update(delta));
+      control.update(delta);
+
       renderer.render(scene, camera);
     }
     animate();
@@ -96,5 +98,4 @@ const insertLighting = (scene: THREE.Scene) => {
     handleWindowResize(camera, renderer);
     control.handleResize();
   });
-  control.handleResize();
 })();

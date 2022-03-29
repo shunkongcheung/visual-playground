@@ -1,11 +1,8 @@
 import * as THREE from "three";
 import { BaseComponent } from "./BaseComponent";
 
-export class Heart implements BaseComponent<THREE.Mesh> {
-  private _object: THREE.Mesh;
-  get object() {
-    return this._object;
-  }
+export class Heart implements BaseComponent {
+  object: THREE.Mesh;
 
   constructor() {
     const heartShape = new THREE.Shape();
@@ -71,13 +68,13 @@ export class Heart implements BaseComponent<THREE.Mesh> {
 
     const geometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
 
-    this._object = new THREE.Mesh(
+    this.object = new THREE.Mesh(
       geometry,
       new THREE.MeshBasicMaterial({ color: 0xff0000 })
     );
   }
 
-  animate() {
-    this._object.rotation.y += 0.01;
+  update() {
+    this.object.rotation.y += 0.01;
   }
 }
