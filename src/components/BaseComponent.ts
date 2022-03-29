@@ -1,6 +1,6 @@
 import { Object3D } from "three";
 
-export interface BaseComponent<E extends Object3D> {
-  readonly object: E;
-  animate: () => any;
+export interface BaseComponent {
+  object: Object3D;
+  update: (delta: number) => any;
 }
