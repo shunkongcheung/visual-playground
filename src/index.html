@@ -11,6 +11,14 @@
   </head>
   <body>
     <a-scene log="hello scene">
+      <a-assets>
+        <img id="my-img" src="assets/i-want-it-all.jpeg" />
+        <a-asset-item
+          id="tree"
+          src="https://cdn.aframe.io/examples/ar/models/triceratops/scene.gltf"
+        ></a-asset-item>
+      </a-assets>
+      <a-image src="#my-img"></a-image>
       <a-box
         color="#EF2D5E"
         position="0 1 -4"
@@ -32,7 +40,11 @@
         height="4"
         color="#7BC8A4"
       ></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
+      <a-gltf-model
+        src="#tree"
+        position="0 0 0"
+        scale="0.01 0.01 0.01"
+      ></a-gltf-model>
       <a-camera><a-cursor></a-cursor></a-camera>
     </a-scene>
   </body>

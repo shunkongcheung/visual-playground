@@ -12,6 +12,12 @@ module.exports = {
         use: "ts-loader",
         exclude: /node_modules/,
       },
+      {
+        test: /\.html$/,
+        use: {
+          loader: "html-loader",
+        },
+      },
     ],
   },
   resolve: {
@@ -20,6 +26,7 @@ module.exports = {
   output: {
     filename: "[name].[hash].js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
   },
   plugins: [
     new CleanWebpackPlugin(),
