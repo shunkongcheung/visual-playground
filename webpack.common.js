@@ -4,10 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "production",
-  entry: {
-    index: path.resolve(__dirname, "./src/index.ts"),
-    global: path.resolve(__dirname, "./src/global.ts"),
-  },
+  entry: path.resolve(__dirname, "./src/index.ts"),
   module: {
     rules: [
       {
@@ -29,7 +26,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "./src/index.html"),
       inject: "head",
-      chunks: ["global", "index"],
     }),
   ],
 };
