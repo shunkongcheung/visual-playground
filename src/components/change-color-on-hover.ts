@@ -8,10 +8,8 @@ registerComponent("change-color-on-hover", {
     const data = this.data;
     const el = this.el; // <a-box>
     const defaultColor = el.getAttribute("material").color;
-    console.log("hello color", el);
 
     el.addEventListener("mouseenter", function () {
-      console.log("hello enter", el);
       el.setAttribute("color", data.color);
     });
 
