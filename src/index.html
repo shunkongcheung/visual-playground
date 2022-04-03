@@ -11,6 +11,12 @@
   </head>
   <body>
     <a-scene log="hello scene">
+      <a-assets>
+        <img id="my-img" src="assets/i-want-it-all.jpeg" />
+        <a-asset-item id="xbot" src="assets/Xbot.glb"></a-asset-item>
+      </a-assets>
+      <a-image src="#my-img"></a-image>
+      <a-entity gltf-model="#xbot"></a-entity>
       <a-box
         color="#EF2D5E"
         position="0 1 -4"
@@ -32,7 +38,6 @@
         height="4"
         color="#7BC8A4"
       ></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
       <a-camera><a-cursor></a-cursor></a-camera>
     </a-scene>
   </body>
